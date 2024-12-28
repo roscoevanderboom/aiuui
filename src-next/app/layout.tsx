@@ -1,5 +1,6 @@
+import { SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
 import '../css/index.css';
-import AppLayout from 'components/AppLayout';
+import { AppSidebar } from '@/components/app-sidebar';
 
 export default function RootLayout({
   children,
@@ -9,9 +10,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <AppLayout>
-         {children}
-        </AppLayout>
+        <SidebarProvider>
+          <AppSidebar />
+          <main className="h-screen w-full">
+            <SidebarTrigger className='float-start' />
+            {children}
+          </main>
+        </SidebarProvider>
       </body>
     </html>
   )
